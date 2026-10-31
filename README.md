@@ -1,5 +1,7 @@
 # EdgeWarn
 
+**Repository layout.** All code modules, result files, ONNX models and figure scripts sit in the repository root. The small `edgewarn/__init__.py` shim exposes the root modules as the `edgewarn` package, so `python run_experiments.py ...` works as written. Wherever this README says `results_camels50/` or `figures/`, use the repository root (for example `python make_figs.py . .`).
+
 Code for the manuscript *Edge-first flood early warning on IoT gateways: compact
 uncertainty-aware models and resilience to hazard-correlated link failures*.
 

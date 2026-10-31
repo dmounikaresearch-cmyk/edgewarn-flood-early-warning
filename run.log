@@ -1,0 +1,210 @@
+15:16:10 Loading data (camels)
+15:16:16   50 basins, 10394 days, windows train/val/test = 293500/102400/93232, positive rate test = 0.085
+15:16:16   2060 flood onsets in the test period
+15:16:16 === seed 0 ===
+15:16:16   training teacher
+15:19:28     epoch 1/8  val loss 1.0811
+15:23:31     epoch 2/8  val loss 1.0209
+15:27:34     epoch 3/8  val loss 1.0049
+15:31:38     epoch 4/8  val loss 0.9918
+15:35:42     epoch 5/8  val loss 1.0070
+15:39:47     epoch 6/8  val loss 0.9921
+15:43:46     epoch 7/8  val loss 1.0007
+15:47:58     epoch 8/8  val loss 0.9969
+15:47:58   training fog model
+15:48:35     epoch 1/10  val loss 1.0763
+15:49:08     epoch 2/10  val loss 1.0056
+15:49:42     epoch 3/10  val loss 1.0020
+15:50:16     epoch 4/10  val loss 1.0025
+15:50:49     epoch 5/10  val loss 0.9852
+15:51:22     epoch 6/10  val loss 0.9798
+15:51:54     epoch 7/10  val loss 0.9771
+15:52:25     epoch 8/10  val loss 0.9647
+15:52:56     epoch 9/10  val loss 0.9850
+15:53:28     epoch 10/10  val loss 0.9788
+15:53:28   distilling student
+15:53:48     epoch 1/10  val loss 1.0244
+15:54:08     epoch 2/10  val loss 1.0048
+15:54:29     epoch 3/10  val loss 0.9827
+15:54:50     epoch 4/10  val loss 0.9909
+15:55:11     epoch 5/10  val loss 0.9793
+15:55:31     epoch 6/10  val loss 0.9794
+15:55:52     epoch 7/10  val loss 0.9809
+15:56:13     epoch 8/10  val loss 0.9874
+15:56:33     epoch 9/10  val loss 0.9727
+15:56:53     epoch 10/10  val loss 0.9738
+15:56:53   training student without distillation
+15:56:57     epoch 1/10  val loss 1.0290
+15:57:02     epoch 2/10  val loss 0.9963
+15:57:06     epoch 3/10  val loss 0.9893
+15:57:10     epoch 4/10  val loss 1.0187
+15:57:15     epoch 5/10  val loss 0.9753
+15:57:19     epoch 6/10  val loss 0.9716
+15:57:23     epoch 7/10  val loss 0.9869
+15:57:27     epoch 8/10  val loss 0.9824
+15:57:32     epoch 9/10  val loss 0.9906
+15:57:36     epoch 10/10  val loss 0.9941
+15:57:36   training LSTM / GRU edge baselines
+15:58:24   exporting, quantizing and timing edge models
+/usr/local/lib/python3.13/site-packages/torch/onnx/_internal/torchscript_exporter/jit_utils.py:308: UserWarning: Constant folding - Only steps=1 can be constant folded for opset >= 10 onnx::Slice op. Constant folding not applied. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/jit/passes/onnx/constant_fold.cpp:178.)
+  _C._jit_pass_onnx_node_shape_type_inference(node, params_dict, opset_version)
+/usr/local/lib/python3.13/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py:712: UserWarning: Constant folding - Only steps=1 can be constant folded for opset >= 10 onnx::Slice op. Constant folding not applied. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/jit/passes/onnx/constant_fold.cpp:178.)
+  _C._jit_pass_onnx_graph_shape_type_inference(
+/usr/local/lib/python3.13/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py:1185: UserWarning: Constant folding - Only steps=1 can be constant folded for opset >= 10 onnx::Slice op. Constant folding not applied. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/jit/passes/onnx/constant_fold.cpp:178.)
+  _C._jit_pass_onnx_graph_shape_type_inference(
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider pre-processing before quantization. See https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+/home/claude/edgewarn/run_experiments.py:43: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html
+  torch.onnx.export(student, torch.zeros(4, cfg.window, C), fp, input_names=["x"],
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider pre-processing before quantization. See https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider pre-processing before quantization. See https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider pre-processing before quantization. See https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+16:05:01   fog / teacher predictions
+16:11:35   tuning thresholds on validation
+16:11:50   ablations and failure sweeps
+16:19:30   seed 0 saved; tables updated
+16:19:31 Done. Results in results_camels50/
+16:19:42 Loading data (camels)
+16:19:47   50 basins, 10394 days, windows train/val/test = 293500/102400/93232, positive rate test = 0.085
+16:19:47   2060 flood onsets in the test period
+16:19:47 === seed 0: loading saved results ===
+16:19:47 === seed 1 ===
+16:19:47   training teacher
+16:23:41     epoch 1/8  val loss 1.0750
+16:27:23     epoch 2/8  val loss 1.0241
+16:31:05     epoch 3/8  val loss 1.0043
+16:34:38     epoch 4/8  val loss 0.9938
+16:38:07     epoch 5/8  val loss 0.9936
+16:41:36     epoch 6/8  val loss 0.9800
+16:45:16     epoch 7/8  val loss 0.9883
+16:48:51     epoch 8/8  val loss 1.0402
+16:48:51   training fog model
+16:49:26     epoch 1/10  val loss 1.0508
+16:49:59     epoch 2/10  val loss 1.0141
+16:50:31     epoch 3/10  val loss 0.9824
+16:51:04     epoch 4/10  val loss 1.0005
+16:51:36     epoch 5/10  val loss 0.9793
+16:52:10     epoch 6/10  val loss 0.9764
+16:52:42     epoch 7/10  val loss 0.9655
+16:53:16     epoch 8/10  val loss 0.9745
+16:53:49     epoch 9/10  val loss 0.9930
+16:54:22     epoch 10/10  val loss 0.9795
+16:54:22   distilling student
+16:54:46     epoch 1/10  val loss 0.9955
+16:55:11     epoch 2/10  val loss 0.9824
+16:55:36     epoch 3/10  val loss 0.9723
+16:55:59     epoch 4/10  val loss 0.9678
+16:56:23     epoch 5/10  val loss 0.9764
+16:56:47     epoch 6/10  val loss 0.9795
+16:57:11     epoch 7/10  val loss 0.9752
+16:57:35     epoch 8/10  val loss 0.9657
+16:57:59     epoch 9/10  val loss 0.9692
+16:58:23     epoch 10/10  val loss 0.9713
+16:58:23   training student without distillation
+16:58:28     epoch 1/10  val loss 1.0651
+16:58:34     epoch 2/10  val loss 1.0330
+16:58:39     epoch 3/10  val loss 1.0154
+16:58:43     epoch 4/10  val loss 1.0022
+16:58:47     epoch 5/10  val loss 0.9979
+16:58:52     epoch 6/10  val loss 0.9900
+16:58:56     epoch 7/10  val loss 0.9891
+16:59:01     epoch 8/10  val loss 0.9691
+16:59:05     epoch 9/10  val loss 0.9854
+16:59:10     epoch 10/10  val loss 0.9828
+16:59:10   training LSTM / GRU edge baselines
+16:59:58   exporting, quantizing and timing edge models
+/usr/local/lib/python3.13/site-packages/torch/onnx/_internal/torchscript_exporter/jit_utils.py:308: UserWarning: Constant folding - Only steps=1 can be constant folded for opset >= 10 onnx::Slice op. Constant folding not applied. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/jit/passes/onnx/constant_fold.cpp:178.)
+  _C._jit_pass_onnx_node_shape_type_inference(node, params_dict, opset_version)
+/usr/local/lib/python3.13/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py:712: UserWarning: Constant folding - Only steps=1 can be constant folded for opset >= 10 onnx::Slice op. Constant folding not applied. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/jit/passes/onnx/constant_fold.cpp:178.)
+  _C._jit_pass_onnx_graph_shape_type_inference(
+/usr/local/lib/python3.13/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py:1185: UserWarning: Constant folding - Only steps=1 can be constant folded for opset >= 10 onnx::Slice op. Constant folding not applied. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/jit/passes/onnx/constant_fold.cpp:178.)
+  _C._jit_pass_onnx_graph_shape_type_inference(
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider pre-processing before quantization. See https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+/home/claude/edgewarn/run_experiments.py:43: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html
+  torch.onnx.export(student, torch.zeros(4, cfg.window, C), fp, input_names=["x"],
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider pre-processing before quantization. See https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider pre-processing before quantization. See https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider pre-processing before quantization. See https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+17:06:34   fog / teacher predictions
+17:13:31   tuning thresholds on validation
+17:13:45   ablations and failure sweeps
+17:13:47   seed 1 saved; tables updated
+17:13:47 Done. Results in results_camels50/
+17:13:55 Loading data (camels)
+17:14:01   50 basins, 10394 days, windows train/val/test = 293500/102400/93232, positive rate test = 0.085
+17:14:01   2060 flood onsets in the test period
+17:14:01 === seed 0: loading saved results ===
+17:14:01 === seed 1: loading saved results ===
+17:14:01 === seed 2 ===
+17:14:01   training teacher
+17:18:14     epoch 1/8  val loss 1.1150
+17:22:24     epoch 2/8  val loss 1.0142
+17:26:40     epoch 3/8  val loss 1.0169
+17:30:50     epoch 4/8  val loss 0.9945
+17:35:00     epoch 5/8  val loss 0.9877
+17:39:04     epoch 6/8  val loss 0.9935
+17:43:06     epoch 7/8  val loss 0.9863
+17:47:14     epoch 8/8  val loss 1.0106
+17:47:14   training fog model
+17:47:51     epoch 1/10  val loss 1.0804
+17:48:25     epoch 2/10  val loss 1.0065
+17:48:57     epoch 3/10  val loss 1.0113
+17:49:29     epoch 4/10  val loss 0.9989
+17:50:02     epoch 5/10  val loss 0.9798
+17:50:34     epoch 6/10  val loss 1.0058
+17:51:06     epoch 7/10  val loss 0.9779
+17:51:38     epoch 8/10  val loss 0.9861
+17:52:09     epoch 9/10  val loss 0.9828
+17:52:42     epoch 10/10  val loss 0.9847
+17:52:42   distilling student
+17:53:06     epoch 1/10  val loss 1.0339
+17:53:30     epoch 2/10  val loss 1.0076
+17:53:54     epoch 3/10  val loss 1.0023
+17:54:18     epoch 4/10  val loss 0.9833
+17:54:42     epoch 5/10  val loss 0.9799
+17:55:06     epoch 6/10  val loss 0.9774
+17:55:31     epoch 7/10  val loss 0.9746
+17:55:56     epoch 8/10  val loss 0.9777
+17:56:20     epoch 9/10  val loss 0.9735
+17:56:44     epoch 10/10  val loss 0.9767
+17:56:44   training student without distillation
+17:56:49     epoch 1/10  val loss 0.9987
+17:56:53     epoch 2/10  val loss 0.9790
+17:56:58     epoch 3/10  val loss 0.9901
+17:57:02     epoch 4/10  val loss 0.9879
+17:57:07     epoch 5/10  val loss 0.9765
+17:57:12     epoch 6/10  val loss 0.9806
+17:57:16     epoch 7/10  val loss 1.0034
+17:57:20     epoch 8/10  val loss 0.9805
+17:57:25     epoch 9/10  val loss 0.9791
+17:57:30     epoch 10/10  val loss 0.9878
+17:57:30   training LSTM / GRU edge baselines
+17:58:19   exporting, quantizing and timing edge models
+/usr/local/lib/python3.13/site-packages/torch/onnx/_internal/torchscript_exporter/jit_utils.py:308: UserWarning: Constant folding - Only steps=1 can be constant folded for opset >= 10 onnx::Slice op. Constant folding not applied. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/jit/passes/onnx/constant_fold.cpp:178.)
+  _C._jit_pass_onnx_node_shape_type_inference(node, params_dict, opset_version)
+/usr/local/lib/python3.13/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py:712: UserWarning: Constant folding - Only steps=1 can be constant folded for opset >= 10 onnx::Slice op. Constant folding not applied. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/jit/passes/onnx/constant_fold.cpp:178.)
+  _C._jit_pass_onnx_graph_shape_type_inference(
+/usr/local/lib/python3.13/site-packages/torch/onnx/_internal/torchscript_exporter/utils.py:1185: UserWarning: Constant folding - Only steps=1 can be constant folded for opset >= 10 onnx::Slice op. Constant folding not applied. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/jit/passes/onnx/constant_fold.cpp:178.)
+  _C._jit_pass_onnx_graph_shape_type_inference(
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider pre-processing before quantization. See https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+/home/claude/edgewarn/run_experiments.py:43: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html
+  torch.onnx.export(student, torch.zeros(4, cfg.window, C), fp, input_names=["x"],
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider pre-processing before quantization. See https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider pre-processing before quantization. See https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+WARNING:root:Please consider pre-processing before quantization. See https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+18:05:12   fog / teacher predictions
+18:11:43   tuning thresholds on validation
+18:11:56   ablations and failure sweeps
+18:11:58   seed 2 saved; tables updated
+18:11:58 Done. Results in results_camels50/

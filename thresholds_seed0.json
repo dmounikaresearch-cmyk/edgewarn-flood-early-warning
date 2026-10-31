@@ -1,0 +1,19 @@
+{
+  "cloud": {
+    "theta": 0.55
+  },
+  "edge": {
+    "theta": 0.5
+  },
+  "fixed": {
+    "theta": 0.5,
+    "band": 0.02
+  },
+  "edgewarn": {
+    "theta": 0.5,
+    "eta0": 0.15,
+    "beta": 0.0,
+    "theta_low": 0.01,
+    "theta_safe": 0.02
+  }
+}

@@ -1,0 +1,32 @@
+flowchart LR
+  subgraph S[Sensors in catchment g]
+    s1[Rain gauge]:::sen
+    s2[Weather station]:::sen
+    s3[River-stage / flow sensor]:::sen
+  end
+  subgraph E[Edge tier: IoT gateway]
+    m1["Compact forecaster<br/>30-day local window<br/>INT8 ONNX, MC dropout"]:::edge
+    pol{"Escalation policy<br/>uncertainty u vs η(p)<br/>link state, cost J"}:::pol
+    w1(["Local warning<br/>(flagged edge-only if<br/>escalation was impossible)"]):::warn
+  end
+  subgraph F[Fog tier]
+    m2["Fog model<br/>180-day history<br/>+ 3 neighbour gateways"]:::fog
+  end
+  subgraph C[Cloud tier]
+    m3["Cloud model<br/>365-day history<br/>+ 3 neighbour gateways"]:::cloud
+  end
+  s1 --> m1
+  s2 --> m1
+  s3 --> m1
+  m1 --> pol
+  pol -- "confident, or no link" --> w1
+  pol -. "uncertain and link up<br/>(gateway–fog link)" .-> m2
+  m2 -. "fog uncertain and link up<br/>(fog–cloud link)" .-> m3
+  m2 -.-> w2([Warning]):::warn
+  m3 -.-> w2
+  classDef sen fill:#eef2f7,stroke:#56677f,color:#1d2733
+  classDef edge fill:#dcefe3,stroke:#2f7d4f,color:#123
+  classDef pol fill:#fff4d6,stroke:#b38600,color:#332
+  classDef fog fill:#e3ecfa,stroke:#3d63a8,color:#123
+  classDef cloud fill:#ece4f7,stroke:#6a4ba3,color:#123
+  classDef warn fill:#fde3e1,stroke:#b8433a,color:#311
